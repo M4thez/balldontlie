@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1>NBA Players</h1>
     <PlayersList />
   </div>
 </template>
@@ -15,3 +16,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.home {
+  color: white;
+}
+</style>
