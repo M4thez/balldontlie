@@ -3,6 +3,9 @@
     <router-link to="/">Home</router-link>
   </div>-->
   <router-view />
+  <div id="nav">
+    <router-link to="/">Home</router-link>
+  </div>
 </template>
 
 <style>
@@ -16,6 +19,16 @@ html {
   text-align: center;
   color: #2c3e50;
 }
+body {
+  background: rgb(0, 0, 56);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 50, 1) 0%,
+    rgba(6, 0, 37, 1) 70%,
+    rgba(211, 95, 0, 1) 100%
+  );
+  min-height: 100vh;
+}
 
 #nav {
   padding: 30px;
@@ -23,10 +36,6 @@ html {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  color: rgb(134, 255, 123);
 }
 </style>

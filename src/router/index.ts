@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     component: PlayerDetails,
     props: true
   },
-  // Error 404 handling - page not found
+  // Handling Error 404 - page not found
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',

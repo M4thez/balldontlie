@@ -1,15 +1,17 @@
 <template>
-  <div class="players-list">
+  <div v-if="players.length" class="players-list">
     <ul v-for="player in players" :key="player['id']">
       <li>
         <h2>{{ player["first_name"] + " " + player["last_name"] }}</h2>
-        <p>{{ player["position"] }}</p>
         <p>{{ player["team"]["full_name"] }}</p>
         <router-link :to="{ name: 'PlayerDetails', params: { id: player['id'] } }">
-          <span class="link">Check</span>
+          <button class="link">Check</button>
         </router-link>
       </li>
     </ul>
+  </div>
+  <div v-else>
+    <h2>Loading data...</h2>
   </div>
 </template>
 
@@ -34,7 +36,6 @@ export default defineComponent({
 
 <style scoped>
 .players-list {
-  background-color: rgb(0, 72, 139);
   color: white;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -47,21 +48,24 @@ ul {
   margin: 0;
 }
 li {
-  padding: 0.8rem;
+  padding: 3rem 1rem;
   margin: 20px;
-  background-color: rgb(0, 38, 87);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 16px 16px;
 }
 a {
   text-decoration: none;
 }
 .link {
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(134, 255, 123);
   padding: 0.5rem;
+  border: none;
   border-radius: 0 0 8px 8px;
   color: black;
   font-weight: bold;
+  cursor: pointer;
 }
 .link:hover {
-  background-color: white;
+  background-color: rgb(205, 255, 209);
 }
 </style>
