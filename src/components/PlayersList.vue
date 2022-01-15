@@ -1,7 +1,8 @@
 <template>
   <div class="search-box">
     <input v-model="search" placeholder="Find players" />
-    <button @click="searchPlayers(search)">Search</button>
+    <button @click="clearQuery">Clear</button>
+    <button class="search-btn" @click="searchPlayers(search)">Search</button>
   </div>
   <div v-if="players.length" class="players-list">
     <ul v-for="player in players" :key="player['id']">
@@ -20,6 +21,7 @@
   <div v-else>
     <h2>Can not find player with this name</h2>
   </div>
+  <button class="link" @click="searchPlayers('')">Return</button>
 </template>
 
 <script lang="ts">
@@ -43,6 +45,9 @@ export default defineComponent({
     searchPlayers(query: string) {
       let searchQuery = encodeURI(query);
       this.getPlayers(searchQuery);
+    },
+    clearQuery() {
+      this.search = "";
     }
   },
   created() {
@@ -53,7 +58,6 @@ export default defineComponent({
 
 <style scoped>
 .players-list {
-  color: white;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
@@ -66,47 +70,56 @@ ul {
 }
 li {
   padding: 3rem 1rem;
-  margin: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 0 0 16px 16px;
 }
 a {
   text-decoration: none;
 }
 .link {
-  background-color: rgb(134, 255, 123);
+  background-color: rgb(202, 202, 202);
   padding: 0.5rem;
   border: none;
   border-radius: 0 0 8px 8px;
-  color: black;
   font-weight: bold;
   cursor: pointer;
-}
-.link:hover {
-  background-color: rgb(205, 255, 209);
-}
-.search-box input,
-button {
-  border: none;
-  padding: 0.6rem 1rem;
   transition: background-color 0.2s;
 }
+.link:hover {
+  background-color: white;
+}
+
+.search-box {
+  margin: 20px;
+}
+.search-box input,
+.search-box button {
+  border: none;
+  padding: 0.7rem 1rem;
+  transition: background-color 0.3s;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4);
+}
 .search-box input {
+  width: 30%;
   border-radius: 8px 0 0 8px;
   outline: none;
-  transition: background-color 0.4s;
+  transition: border-radius 0.4s;
 }
 .search-box input:focus {
-  background-color: lightblue;
+  border-radius: 16px 0 0 16px;
 }
 .search-box button {
-  background-color: rgb(134, 255, 123);
+  background-color: rgba(19, 8, 71, 0.8);
+  color: white;
   cursor: pointer;
-  border-radius: 0 8px 8px 0;
   font-weight: bold;
 }
 .search-box button:hover {
-  background-color: rgb(205, 255, 209);
+  background-color: black;
+}
+.search-btn {
+  border-radius: 0 8px 8px 0;
 }
 
 /* Media Queries */

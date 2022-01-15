@@ -16,9 +16,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.home {
-  color: white;
-}
-</style>

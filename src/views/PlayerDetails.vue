@@ -3,7 +3,6 @@
   <div v-if="player" class="player-details">
     <div class="basic-info">
       <p>{{ player["first_name"] + " " + player["last_name"] }}</p>
-      <p>Position - {{ player["position"] }}</p>
       <p>{{ player["team"]["abbreviation"] }}, {{ player["team"]["full_name"] }}</p>
       <p>Conference - {{ player["team"]["conference"] }}, Division - {{ player["team"]["division"] }}</p>
     </div>
@@ -15,9 +14,15 @@
         :pts="stats['pts']"
       />
     </div>
+    <div v-else>
+      <p>No statistics for the player available for season 2018</p>
+    </div>
   </div>
   <div v-else>
     <h2>Loading the player...</h2>
+  </div>
+  <div id="nav">
+    <router-link to="/">Return</router-link>
   </div>
 </template>
 
@@ -55,13 +60,14 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: left;
-  padding: 2rem;
-
-  color: white;
+  padding: 4rem 2rem;
   background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
 }
-h2 {
-  color: white;
+
+.basic-info {
+  font-size: 1.2rem;
+  padding: 0 2rem;
 }
 @media screen and (max-width: 720px) {
   .player-details {
