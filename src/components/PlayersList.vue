@@ -1,4 +1,8 @@
 <template>
+  <div class="search-box">
+    <input v-model="search" placeholder="Find players" />
+    <button @click="searchPlayers(search)">Search</button>
+  </div>
   <div v-if="players.length" class="players-list">
     <ul v-for="player in players" :key="player['id']">
       <li>
@@ -10,8 +14,11 @@
       </li>
     </ul>
   </div>
-  <div v-else>
+  <div v-else-if="!players.length && !search">
     <h2>Loading data...</h2>
+  </div>
+  <div v-else>
+    <h2>Can not find player with this name</h2>
   </div>
 </template>
 
@@ -23,14 +30,24 @@ export default defineComponent({
   data() {
     return {
       players: [],
+      search: ""
     };
   },
-  mounted() {
-    fetch("https://www.balldontlie.io/api/v1/players?per_page=48")
-      .then(res => res.json())
-      .then(data => this.players = data.data)
-      .catch(error => console.log(error.message))
+  methods: {
+    getPlayers(params = "") {
+      fetch("https://www.balldontlie.io/api/v1/players?per_page=48&search=" + params)
+        .then(res => res.json())
+        .then(data => this.players = data.data)
+        .catch(error => console.log(error.message))
+    },
+    searchPlayers(query: string) {
+      let searchQuery = encodeURI(query);
+      this.getPlayers(searchQuery);
+    }
   },
+  created() {
+    this.getPlayers();
+  }
 });
 </script>
 
@@ -66,6 +83,28 @@ a {
   cursor: pointer;
 }
 .link:hover {
+  background-color: rgb(205, 255, 209);
+}
+.search-box input,
+button {
+  border: none;
+  padding: 0.6rem 1rem;
+  transition: background-color 0.2s;
+}
+.search-box input {
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: background-color 0.4s;
+}
+.search-box input:focus {
+  background-color: lightblue;
+}
+.search-box button {
+  background-color: rgb(134, 255, 123);
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+}
+.search-box button:hover {
   background-color: rgb(205, 255, 209);
 }
 </style>
