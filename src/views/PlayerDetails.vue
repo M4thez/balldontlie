@@ -1,10 +1,11 @@
 <template>
   <h2>Player Details</h2>
   <div v-if="player" class="player-details">
-    <div>
+    <div class="basic-info">
       <p>{{ player["first_name"] + " " + player["last_name"] }}</p>
-      <p>Position: {{ player["position"] }}</p>
-      <p>Team: {{ player["team"]["full_name"] }}</p>
+      <p>Position - {{ player["position"] }}</p>
+      <p>{{ player["team"]["abbreviation"] }}, {{ player["team"]["full_name"] }}</p>
+      <p>Conference - {{ player["team"]["conference"] }}, Division - {{ player["team"]["division"] }}</p>
     </div>
     <div v-if="stats">
       <Stats
@@ -61,5 +62,14 @@ export default defineComponent({
 }
 h2 {
   color: white;
+}
+@media screen and (max-width: 720px) {
+  .player-details {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  .basic-info {
+    text-align: center;
+  }
 }
 </style>

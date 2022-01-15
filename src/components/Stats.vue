@@ -36,11 +36,16 @@ export default defineComponent({
 <style scoped>
 table {
   width: 100%;
-  border: 1px solid white;
+  border: 2px solid rgb(110, 110, 110);
 }
-table,
-td,
+table td,
 th {
-  padding: 0.4rem;
+  padding: 0.8rem;
+}
+table th {
+  background-color: rgb(211, 95, 0);
+}
+table td {
+  background-color: rgb(6, 0, 37);
 }
 </style>
