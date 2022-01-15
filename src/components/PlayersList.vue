@@ -107,4 +107,22 @@ button {
 .search-box button:hover {
   background-color: rgb(205, 255, 209);
 }
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .players-list {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .players-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 400px) {
+  .players-list {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
