@@ -103,6 +103,7 @@ button {
   background-color: rgb(134, 255, 123);
   cursor: pointer;
   border-radius: 0 8px 8px 0;
+  font-weight: bold;
 }
 .search-box button:hover {
   background-color: rgb(205, 255, 209);
