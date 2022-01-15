@@ -26,7 +26,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    fetch("https://www.balldontlie.io/api/v1/players")
+    fetch("https://www.balldontlie.io/api/v1/players?per_page=48")
       .then(res => res.json())
       .then(data => this.players = data.data)
       .catch(error => console.log(error.message))
