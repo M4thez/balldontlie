@@ -6,16 +6,21 @@
       <p>{{ player["team"]["abbreviation"] }}, {{ player["team"]["full_name"] }}</p>
       <p>Conference - {{ player["team"]["conference"] }}, Division - {{ player["team"]["division"] }}</p>
     </div>
-    <div v-if="stats">
-      <Stats
-        :season="stats['season']"
-        :games_played="stats['games_played']"
-        :min="stats['min']"
-        :pts="stats['pts']"
-      />
-    </div>
-    <div v-else>
-      <p>No statistics for the player available for season 2018</p>
+    <div class="statistics">
+      <div v-if="stats2018">
+        <Stats
+          :season="stats2018['season']"
+          :games_played="stats2018['games_played']"
+          :min="stats2018['min']"
+          :pts="stats2018['pts']"
+          :ast="stats2018['ast']"
+          :stl="stats2018['stl']"
+          :blk="stats2018['blk']"
+        />
+      </div>
+      <div v-else>
+        <p>No statistics for the player available in season 2018</p>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -38,7 +43,8 @@ export default defineComponent({
     return {
       player: null,
       baseUrl: "https://www.balldontlie.io/api/v1/",
-      stats: null,
+      stats2018: null,
+      stats2017: null,
     }
   },
   mounted() {
@@ -48,7 +54,11 @@ export default defineComponent({
       .catch(error => console.log(error.message));
     fetch(this.baseUrl + "season_averages?season=2018&player_ids[]=" + this.id)
       .then(res => res.json())
-      .then(data => this.stats = data.data[0])
+      .then(data => this.stats2018 = data.data[0])
+      .catch(error => console.log(error.message));
+    fetch(this.baseUrl + "season_averages?season=2017&player_ids[]=" + this.id)
+      .then(res => res.json())
+      .then(data => this.stats2017 = data.data[0])
       .catch(error => console.log(error.message));
   }
 })

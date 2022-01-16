@@ -2,16 +2,22 @@
   <div>
     <table>
       <tr>
-        <th>SEASON</th>
-        <th>GAMES PLAYED</th>
-        <th>MINUTES PLAYED</th>
-        <th>PTS</th>
+        <th>Season</th>
+        <th>Games</th>
+        <th>Minutes Played</th>
+        <th>Points</th>
+        <th>Assists</th>
+        <th>Steals</th>
+        <th>Blocks</th>
       </tr>
       <tr>
         <td>{{ season }}</td>
         <td>{{ games_played }}</td>
         <td>{{ min }}</td>
         <td>{{ pts }}</td>
+        <td>{{ ast }}</td>
+        <td>{{ stl }}</td>
+        <td>{{ blk }}</td>
       </tr>
     </table>
   </div>
@@ -27,6 +33,9 @@ export default defineComponent({
     games_played: Number,
     min: String,
     pts: Number,
+    ast: Number,
+    stl: Number,
+    blk: Number,
   }
 })
 
