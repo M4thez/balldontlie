@@ -15,7 +15,6 @@
       </tr>
     </table>
   </div>
-  <div id="chart"></div>
 </template>
 
 <script lang="ts">

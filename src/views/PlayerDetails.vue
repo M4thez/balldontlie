@@ -1,5 +1,5 @@
 <template>
-  <h2>Player Details</h2>
+  <h1>Player Details</h1>
   <div v-if="player" class="player-details">
     <div class="basic-info">
       <p>{{ player["first_name"] + " " + player["last_name"] }}</p>
