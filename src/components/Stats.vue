@@ -1,24 +1,24 @@
 <template>
-  <div>
+  <div class="table-box">
     <table>
-      <tr>
-        <th>Season</th>
-        <th>Games</th>
-        <th>Minutes Played</th>
-        <th>Points</th>
-        <th>Assists</th>
-        <th>Steals</th>
-        <th>Blocks</th>
-      </tr>
-      <tr>
-        <td>{{ season }}</td>
-        <td>{{ games_played }}</td>
-        <td>{{ min }}</td>
-        <td>{{ pts }}</td>
-        <td>{{ ast }}</td>
-        <td>{{ stl }}</td>
-        <td>{{ blk }}</td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>Season</th>
+          <th>Games</th>
+          <th>Minutes</th>
+          <th>Points</th>
+          <th>Assists</th>
+          <th>Blocks</th>
+        </tr>
+        <tr>
+          <td>{{ season }}</td>
+          <td>{{ games_played }}</td>
+          <td>{{ min }}</td>
+          <td>{{ pts }}</td>
+          <td>{{ ast }}</td>
+          <td>{{ blk }}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -34,7 +34,6 @@ export default defineComponent({
     min: String,
     pts: Number,
     ast: Number,
-    stl: Number,
     blk: Number,
   }
 })
@@ -42,7 +41,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.table-box {
+  overflow-x: auto;
+}
+
 table {
+  margin: 2rem 0;
   width: 100%;
   border: 2px solid rgb(110, 110, 110);
 }
@@ -55,5 +59,11 @@ table th {
 }
 table td {
   background-color: rgb(6, 0, 37);
+}
+@media screen and (max-width: 768px) {
+  table td,
+  th {
+    padding: 0.4rem;
+  }
 }
 </style>

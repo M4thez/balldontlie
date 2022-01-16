@@ -21,6 +21,20 @@
       <div v-else>
         <p>No statistics for the player available in season 2018</p>
       </div>
+      <div v-if="stats2017">
+        <Stats
+          :season="stats2017['season']"
+          :games_played="stats2017['games_played']"
+          :min="stats2017['min']"
+          :pts="stats2017['pts']"
+          :ast="stats2017['ast']"
+          :stl="stats2017['stl']"
+          :blk="stats2017['blk']"
+        />
+      </div>
+      <div v-else>
+        <p>No statistics for the player available in season 2017</p>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -79,13 +93,19 @@ export default defineComponent({
   font-size: 1.2rem;
   padding: 0 2rem;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
   .player-details {
     grid-template-columns: 1fr;
     row-gap: 20px;
   }
   .basic-info {
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .player-details {
+    padding: 4rem 0.4rem;
   }
 }
 </style>

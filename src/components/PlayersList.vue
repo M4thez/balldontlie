@@ -123,18 +123,18 @@ a {
 }
 
 /* Media Queries */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
   .players-list {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .players-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   .players-list {
     grid-template-columns: 1fr;
   }
