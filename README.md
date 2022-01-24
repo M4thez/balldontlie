@@ -1,6 +1,11 @@
 # balldontlie
 
-## Project setup
+## Docker pull command
+```
+docker pull m4thez/nobl9-balldontlie
+```
+
+### Project setup
 ```
 npm install
 ```
